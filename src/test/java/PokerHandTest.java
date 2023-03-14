@@ -57,5 +57,32 @@ public class PokerHandTest {
         pokerHands.judgeHands();
         assertEquals("Black wins. - with high card: 5",pokerHands.getWinner());
     }
+
+    @Test
+    public void testGetBlackWinnerWithHighCard() throws Exception {
+        String content = "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C KH";
+        PokerHands pokerHands = new PokerHands(content);
+        pokerHands.judgeHands();
+        assertEquals("Black wins. - with high card: 9",pokerHands.getWinner());
+    }
+
+    @Test
+    public void testGetWhiteWinnerWithHighCard() throws Exception {
+        String content = "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH";
+        PokerHands pokerHands = new PokerHands(content);
+        pokerHands.judgeHands();
+        assertEquals("White wins. - with high card: 14",pokerHands.getWinner());
+    }
+
+
+    @Test
+    public void testGetTie() throws Exception {
+        String content = "Black: 2D 3D 4D 5D 6D  White: 2H 3H 4H 5H 6H";
+        PokerHands pokerHands = new PokerHands(content);
+        pokerHands.judgeHands();
+        assertEquals("Tie.",pokerHands.getWinner());
+    }
 }
+
+
 
